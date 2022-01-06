@@ -3,3 +3,72 @@
 }
 
 
+table {
+  width: 100%;
+}
+
+.mat-table__wrapper{
+  width:100%
+}
+.mat-table__wrapper .mat-table{
+  min-width:1000px
+}
+.mat-table__wrapper .mat-table .mat-cell,.mat-table__wrapper .mat-table .mat-footer-cell,.mat-table__wrapper .mat-table .mat-header-cell{
+  padding-right:10px
+}
+.mat-table__wrapper .mat-table .mat-cell:last-child,.mat-table__wrapper .mat-table .mat-footer-cell:last-child,.mat-table__wrapper .mat-table .mat-header-cell:last-child{
+  padding-right:0
+}
+.mat-table__wrapper .mat-table .mat-row{
+  -webkit-transition:padding 0.3s ease;
+  transition:padding 0.3s ease
+}
+.mat-table__wrapper .mat-table .mat-row-editing{
+  -webkit-transition:padding 0.3s ease;
+  transition:padding 0.3s ease;
+  padding:12px 0 !important
+}
+.mat-table__wrapper .mat-table .mat-row-editing .mat-form-field-fluid{
+  width:99% !important
+}
+.mat-table__wrapper .mat-column-actions .mat-column-actions-wrapper{
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-align:center;
+  -ms-flex-align:center;
+  align-items:center
+}
+.mat-table__wrapper .mat-column-actions .mat-spinner{
+  margin-left:12px;
+  margin-right:8px
+}
+.mat-table__wrapper .mat-table__message{
+  padding:30px !important;
+  text-align:center;
+  font-weight:500
+}
+.mat-table__wrapper .mat-column-checkbox{
+  padding-left:20px
+}
+.mat-table__wrapper .mat-column-checkbox .mat-checkbox .mat-checkbox-layout{
+  margin-top:0.25rem;
+  margin-bottom:0.25rem
+}
+.mat-table__wrapper .ps__rail-y{
+  z-index:100
+}
+.mat-table-sticky{
+  z-index:97 !important
+}
+.mat-table__bottom{
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-align:center;
+  -ms-flex-align:center;
+  align-items:center;
+  -webkit-box-pack:end;
+  -ms-flex-pack:end;
+  justify-content:flex-end
+}

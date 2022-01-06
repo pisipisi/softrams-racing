@@ -7,6 +7,7 @@ const path = require('path');
 var xssFilter = require('x-xss-protection');
 var nosniff = require('dont-sniff-mimetype');
 const request = require('request');
+const { json } = require('stream/consumers');
 
 const app = express();
 
@@ -36,9 +37,12 @@ app.use(
 );
 
 app.get('/api/members', (req, res) => {
-  request('http://localhost:3000/members', (err, response, body) => {
+  const { pageIndex, pageSize, sortOrder, sortField } = req.query;
+  console.log(req.query);
+  request(`http://localhost:3000/members?_start=${pageIndex * pageSize || 0}&_end=${((+pageIndex || 0) * +pageSize) + +pageSize || 20}&_sort=${sortField}&_order=${sortOrder ?? 'asc'}`, (err, response, body) => {
     if (response.statusCode <= 500) {
-      res.send(body);
+      const totalCount = response.headers['x-total-count'];
+      res.send({ items: JSON.parse(body), totalCount });
     }
   });
 });

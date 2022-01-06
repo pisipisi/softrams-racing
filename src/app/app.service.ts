@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { QueryResultsModel } from './core/models/query-models/query-results.model';
+import { HttpUtilsService } from './core/services/http-utils.service';
+import { QueryParamsModel } from './core/models/query-models/query-params.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +14,18 @@ export class AppService {
   api = 'http://localhost:8000/api';
   username!: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  private httpUtils: HttpUtilsService) {}
 
   // Returns all members
-  getMembers(): Observable<any> {
+  getMembers(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
+    const httpHeaders = this.httpUtils.getHTTPHeaders();
+		const httpParams = this.httpUtils.getFindHTTPParams(queryParams);
+
     return this.http
-      .get(`${this.api}/members`)
+      .get<QueryResultsModel>(`${this.api}/members`, {
+        headers: httpHeaders,
+        params:  httpParams
+      })
       .pipe(catchError(this.handleError));
   }
 

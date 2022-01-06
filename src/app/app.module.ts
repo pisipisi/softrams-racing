@@ -14,7 +14,16 @@ import { MemberDetailsComponent } from './member-details/member-details.componen
 import { MembersComponent } from './members/members.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule, MatPseudoCheckboxModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { HttpUtilsService } from './core/services/http-utils.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 // We may be missing a route...
 const ROUTES = [
   {
@@ -41,9 +50,18 @@ const ROUTES = [
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule
   ],
-  providers: [AppService, HttpClient],
+  providers: [AppService, HttpClient, HttpUtilsService,],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
