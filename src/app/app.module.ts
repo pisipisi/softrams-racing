@@ -13,6 +13,7 @@ import { BannerComponent } from './banner/banner.component';
 import { MemberDetailsComponent } from './member-details/member-details.component';
 import { MembersComponent } from './members/members.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // We may be missing a route...
 const ROUTES = [
@@ -39,7 +40,8 @@ const ROUTES = [
     RouterModule.forRoot(ROUTES, { useHash: true }),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [AppService, HttpClient],
   bootstrap: [AppComponent]
