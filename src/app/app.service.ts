@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { QueryResultsModel } from './core/models/query-models/query-results.model';
 import { HttpUtilsService } from './core/services/http-utils.service';
 import { QueryParamsModel } from './core/models/query-models/query-params.model';
 import { MemberModel } from './core/models/member.model';
 import { TeamModel } from './core/models/team.model';
+import { find } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,9 @@ export class AppService {
     this.username = name;
   }
 
-  addMember(memberForm: any) { }
+  addMember(member: any) { 
+    return this.http.post(`${this.api}/addMember`, member);
+  }
 
   getTeams(): Observable<TeamModel[]> { 
     return this.http.get<TeamModel[]>(`${this.api}/teams`);
@@ -52,6 +55,16 @@ export class AppService {
 
   deleteMember(id: number) {
     return this.http.delete(`${this.api}/members/${id}`);
+  }
+
+  deleteMembers(ids: number[]) {
+    const del: Observable<any>[] = [];
+    ids.forEach(id => del.push(this.deleteMember(id)));
+    return forkJoin(del);
+  }
+
+  updateMember(member: MemberModel) {
+    return this.http.post(`${this.api}/addMember`, member);
   }
 
   private handleError(error: HttpErrorResponse) {

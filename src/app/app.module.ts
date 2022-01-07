@@ -26,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 import { DeleteEntityDialogComponent } from './core/shared/delete-entity-dialog/delete-entity-dialog.component';
 import { FetchEntityDialogComponent } from './core/shared/fetch-entity-dialog/fetch-entity-dialog.component';
 import { UpdateStatusDialogComponent } from './core/shared/update-status-dialog/update-status-dialog.component';
@@ -93,6 +94,7 @@ const ROUTES = [
     MatDialogModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatRadioModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreModule.forFeature('teams', teamsReducer),
 		EffectsModule.forRoot([TeamEffects]),

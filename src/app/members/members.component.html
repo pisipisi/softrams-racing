@@ -9,7 +9,7 @@
 			</div>
 		</div>
     <div class="m-portlet__head-tools" >
-      <button (click)="goToAddMemberForm()" class="btn btn-primary pull-right" mat-raised-button matTooltip="Create new member" color="primary" type="button">
+      <button (click)="addMember()" class="btn btn-primary pull-right" mat-raised-button matTooltip="Create new member" color="primary" type="button">
         <span>Add Member</span>
       </button>
     </div>
@@ -38,7 +38,7 @@
 						<mat-form-field class="mat-form-field-fluid">
 							<input matInput placeholder="Search member" #searchInput placeholder="Search">
 							<mat-hint align="start">
-								<strong>Search</strong> in first name fields</mat-hint>
+								<strong>Search</strong> in all fields</mat-hint>
 						</mat-form-field>
 					</div>
 
@@ -57,7 +57,7 @@
 							</label>
 						</div>
 						<div class="m-form__control m-form__group--inline">
-							<button mat-raised-button color="accent" class="btn btn-danger" matTooltip="Delete selected members">
+							<button (click)="deleteMembers()" mat-raised-button color="accent" class="btn btn-danger" matTooltip="Delete selected members">
 								<mat-icon>delete</mat-icon> Delete All
 							</button>&nbsp;<!-- Call 'delete-entity-dialog' from _shared folder -->
 							<button  (click)="updateStatusForMembers()" mat-raised-button class="btn btn-primary btn-small"  matTooltip="Update status for selected members">

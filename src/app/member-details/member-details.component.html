@@ -1,7 +1,118 @@
+<div class="m-portlet"
+  [ngClass]="{ 'm-portlet--body-progress' : viewLoading, 'm-portlet--body-progress-overlay' : loadingAfterSubmit }">
+  <div class="m-portlet__head">
+    <div class="m-portlet__head-caption">
+      <div class="m-portlet__head-title">
+        <span class="m-portlet__head-icon m--hide">
+          <i class="la la-gear"></i>
+        </span>
+        <h3 class="m-portlet__head-text">{{getTitle()}}</h3>
+      </div>
+    </div>
+  </div>
+  <form class="m-form" [formGroup]="memberForm">
+    <div class="m-portlet__body">
+
+      <div class="m-portlet__body-progress">
+        <mat-spinner [diameter]="20"></mat-spinner>
+      </div>
+
+      <m-alert *ngIf="hasFormErrors" [duration]="30000" [showCloseButton]="true"
+        (close)="onAlertClose($event)">
+        {{errorMessage}}
+      </m-alert>
+
+      <div class="form-group m-form__group row">
+        <div class="col-lg-6 m--margin-bottom-20-mobile">
+          <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Enter First Name" formControlName="firstName" />
+            <mat-error>First Name is
+              <strong>required</strong>
+            </mat-error>
+            <mat-hint align="start">Please enter
+              <strong>First Name</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 m--margin-bottom-20-mobile">
+          <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Enter Last Name" formControlName="lastName" />
+            <mat-error>Last Name is
+              <strong>required</strong>
+            </mat-error>
+            <mat-hint align="start">Please enter
+              <strong>Last Name</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        
+      </div>
+      <div class="m-separator m-separator--dashed"></div>
+      <div class="form-group m-form__group row">
+        <div class="col-lg-6 m--margin-bottom-20-mobile">
+          <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Enter Job Title" formControlName="jobTitle" />
+            <mat-error>Job Title is
+              <strong>required</strong>
+            </mat-error>
+            <mat-hint align="start">Please enter
+              <strong>Job Title</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 m--margin-bottom-20-mobile">
+          <mat-form-field class="mat-form-field-fluid">
+            <mat-select placeholder="Team" formControlName="team">
+              <mat-option [value]="team.teamName" *ngFor="let team of teams">{{ team.teamName }}</mat-option>
+            </mat-select>
+            <mat-hint align="start">
+              <strong>Team</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="m-separator m-separator--dashed"></div>
+        <div class="form-group m-form__group row">
+          <div class="col-lg-12 m--margin-bottom-20-mobile">
+            <!-- <mat-form-field class="mat-form-field-fluid"> -->
+              <!-- <input matInput placeholder="Enter Job Title" formControlName="status" /> -->
+              <mat-radio-group formControlName="status">
+                <mat-radio-button value="Active">Active</mat-radio-button>
+                <mat-radio-button value="Inactive">Inactive</mat-radio-button>
+              </mat-radio-group>
+              <!-- <mat-error>Job Title is
+                <strong>required</strong>
+              </mat-error>
+              <mat-hint align="start">Please enter
+                <strong>Job Title</strong>
+              </mat-hint> -->
+            <!-- </mat-form-field> -->
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+      <div class="m-form__actions m-form__actions--solid">
+        <div class="row text-right">
+          <div class="col-lg-12">
+            <button type="button" mat-raised-button mat-dialog-close cdkFocusInitial
+              matTooltip="Cancel changes">
+              Cancel
+            </button>&nbsp;
+            <button type="button" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="viewLoading"
+              matTooltip="Save changes">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- 
 <div class="container-fluid col-md-6">
   <h3 class="text-center lead">Add Member to Racing Team</h3>
   <br />
-  <!--Template Driven Form or Model Driven Form?-->
+
   <form (ngSubmit)="onSubmit(memberForm)">
     <div>
       <div class="row">
@@ -32,7 +143,7 @@
             placeholder="Job Title"
           />
         </div>
-        <!--We may have to make a service call to get this list-->
+    
         <select id="team" class="col-md-6 custom-select">
           <option *ngFor="let team of teams">{{ team.teamName }}</option>
         </select>
@@ -49,9 +160,9 @@
         </div>
       </div>
     </div>
-    <!--Disable if form is invalid-->
+
     <button type="submit" class="btn btn-primary pull-right">
       Save Member
     </button>
   </form>
-</div>
+</div> -->

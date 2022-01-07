@@ -208,11 +208,11 @@ export class MembersComponent implements OnInit {
 	}
 
 
-  deleteAdmins() {
-		const _title: string = 'Admins Delete';
-		const _description: string = 'Are you sure to permanently delete selected admins?';
-		const _waitDesciption: string = 'Admins are deleting';
-		const _deleteMessage = 'Selected admins have been deleted';
+  deleteMembers() {
+		const _title: string = 'Members Delete';
+		const _description: string = 'Are you sure to permanently delete selected members?';
+		const _waitDesciption: string = 'Members are deleting';
+		const _deleteMessage = 'Selected members have been deleted';
 
 		const dialogRef = this.layoutUtilsService.deleteElement(_title, _description, _waitDesciption);
 		dialogRef.afterClosed().subscribe(res => {
@@ -224,13 +224,13 @@ export class MembersComponent implements OnInit {
 			for (let i = 0; i < this.selection.selected.length; i++) {
 				idsForDeletion.push(this.selection.selected[i].id);
 			}
-			// this.adminsService
-			// 	.deleteAdmins(idsForDeletion)
-			// 	.subscribe(() => {
-			// 		this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
-			// 		this.loadMembersList();
-			// 		this.selection.clear();
-			// 	});
+			this.appService
+				.deleteMembers(idsForDeletion)
+				.subscribe(() => {
+					this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
+					this.loadMembersList();
+					this.selection.clear();
+				});
 		});
 	}
 

@@ -1,3 +1,19 @@
 #activeStatus {
   margin-right: 10px;
 }
+
+.m-separator{
+  height:0;
+  margin:20px 0
+}
+
+.m-separator{
+  border-bottom:1px solid #ebedf2
+}
+.m-separator.m-separator--dashed{
+  border-bottom:1px dashed #ebedf2
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
