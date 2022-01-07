@@ -7,6 +7,7 @@ import { QueryResultsModel } from './core/models/query-models/query-results.mode
 import { HttpUtilsService } from './core/services/http-utils.service';
 import { QueryParamsModel } from './core/models/query-models/query-params.model';
 import { MemberModel } from './core/models/member.model';
+import { TeamModel } from './core/models/team.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,9 @@ export class AppService {
 
   addMember(memberForm: any) { }
 
-  getTeams() { }
+  getTeams(): Observable<TeamModel[]> { 
+    return this.http.get<TeamModel[]>(`${this.api}/teams`);
+  }
 
   // UPDATE Status
   updateStatusForMembers(members: MemberModel[], status: string): Observable<any> {

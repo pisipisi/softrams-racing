@@ -2,6 +2,9 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../core/reducers';
+import { selectAllTeams } from '../core/selectors/team.selector';
 
 // This interface may be useful in the times ahead...
 interface Member {
@@ -25,9 +28,15 @@ export class MemberDetailsComponent implements OnInit, OnChanges {
   alertMessage!: String;
   teams: any[] = [];
 
-  constructor(private fb: FormBuilder, private appService: AppService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder, 
+    private appService: AppService, 
+    private store: Store<AppState>,
+    private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.select(selectAllTeams).subscribe(data => console.log(data));
+  }
 
   ngOnChanges() {}
 

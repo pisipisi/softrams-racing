@@ -35,6 +35,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ActionNotificationComponent } from './core/shared/action-notification/action-notification.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StoreModule } from '@ngrx/store';
+import { teamsReducer } from './core/reducers/team.reduder';
+import { EffectsModule } from '@ngrx/effects';
+import { TeamEffects } from './core/effects/team.effect';
+import { metaReducers, reducers } from './core/reducers';
 
 // We may be missing a route...
 const ROUTES = [
@@ -87,7 +92,10 @@ const ROUTES = [
     MatButtonModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forFeature('teams', teamsReducer),
+		EffectsModule.forRoot([TeamEffects]),
   ],
   providers: [
     AppService, 
