@@ -6,7 +6,7 @@
       "lastName": "Doe",
       "jobTitle": "Driver",
       "team": "Formula 1 - Car 77",
-      "status": "Active"
+      "status": "Inactive"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "lastName": "Sainz",
       "jobTitle": "Driver",
       "team": "Formula 1 - Car 78",
-      "status": "Active"
+      "status": "Inactive"
     },
     {
       "id": 3,

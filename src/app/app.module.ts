@@ -24,6 +24,18 @@ import { HttpUtilsService } from './core/services/http-utils.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { DeleteEntityDialogComponent } from './core/shared/delete-entity-dialog/delete-entity-dialog.component';
+import { FetchEntityDialogComponent } from './core/shared/fetch-entity-dialog/fetch-entity-dialog.component';
+import { UpdateStatusDialogComponent } from './core/shared/update-status-dialog/update-status-dialog.component';
+import { AlertComponent } from './core/shared/alert/alert.component';
+import { LayoutUtilsService } from './core/services/layout-util.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ActionNotificationComponent } from './core/shared/action-notification/action-notification.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 // We may be missing a route...
 const ROUTES = [
   {
@@ -43,7 +55,18 @@ const ROUTES = [
 
 // Notice how both FormsModule and ReactiveFormsModule imported...choices, choices!
 @NgModule({
-  declarations: [AppComponent, BannerComponent, MemberDetailsComponent, MembersComponent, LoginComponent],
+  declarations: [
+    AppComponent, 
+    BannerComponent, 
+    MemberDetailsComponent, 
+    MembersComponent, 
+    LoginComponent,
+    ActionNotificationComponent,
+		DeleteEntityDialogComponent,
+		FetchEntityDialogComponent,
+		UpdateStatusDialogComponent,
+		AlertComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
@@ -59,9 +82,19 @@ const ROUTES = [
     MatSortModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
-  providers: [AppService, HttpClient, HttpUtilsService,],
+  providers: [
+    AppService, 
+    HttpClient, 
+    HttpUtilsService,
+    LayoutUtilsService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

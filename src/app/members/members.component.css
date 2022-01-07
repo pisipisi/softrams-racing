@@ -1,12 +1,23 @@
 #addMemberButton {
   margin-bottom: 10px;
 }
-
-
+label {
+  display: inline-block;
+}
 table {
   width: 100%;
 }
-
+.mat-column-checkbox{
+  -webkit-box-flex:0;
+  -ms-flex:0 0 70px;
+  flex:0 0 70px
+}
+.mat-checkbox{
+  font-family:Roboto, "Helvetica Neue", sans-serif
+}
+.mat-checkbox-layout .mat-checkbox-label{
+  line-height:24px
+}
 .mat-table__wrapper{
   width:100%
 }
@@ -71,4 +82,25 @@ table {
   -webkit-box-pack:end;
   -ms-flex-pack:end;
   justify-content:flex-end
+}
+
+.m-form .m-form__filtration{
+  margin:0 0 30px 0
+}
+.m-form .m-form__group-action{
+  margin:0 0 30px 0
+}
+.m-form .m-form__group.m-form__group--inline{
+  display:table;
+  padding:0
+}
+.m-form .m-form__group.m-form__group--inline>.m-form__label.m-form__label-no-wrap{
+  white-space:nowrap
+}
+
+.m-form .m-form__group.m-form__group--inline>.m-form__label{
+  display:table-cell;
+  vertical-align:middle;
+  margin:0;
+  padding-right:0.5rem
 }
